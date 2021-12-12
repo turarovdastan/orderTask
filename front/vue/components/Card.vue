@@ -34,6 +34,7 @@
 export default {
     props:['card'],
     mounted(url=this.card.photo){
+        console.log(url);
         this.$refs.img.setAttribute('src',`https://frontend-test.idaproject.com${url}`)
     },
     data:()=>({

@@ -7,12 +7,6 @@
     </div>
 
     <div class="main-products">
-        
-        <div class="nav">
-            <div v-for="i in urls" :key="i.id" class="link"   :class="{'active-link': rt == i.id}" @click="render(i.id)">
-                {{i.name}}
-            </div>
-        </div>
         <div class="products">
             <Card v-for="i of DATA" :key="i.id" :card="i"/>
         </div>
@@ -24,6 +18,9 @@
 <script>
 import Card from '../components/Card.vue'
 export default {
+    mounted(){
+        this.$store.dispatch('fetchProducts')
+    },
     components:{
         Card
     },
@@ -37,21 +34,10 @@ export default {
     },
     },
     computed:{           
-    DATA(){
-        return  this.$store.getters.allProducts.filter(i=>i.category === this.rt)
+        DATA(){
+            return  this.$store.getters.allProducts.filter(i=>i.category === this.rt)
+        },
     },
-    async mounted(){
-        await fetch(
-        'https://frontend-test.idaproject.com/api/product-category'
-        ).then(res =>{
-            this.urls = res.json() 
-            console.log(res)
-        }) 
-    console.log(this.$store.getters.products + 'kkkk')
-    this.$store.dispatch('fetchProducts')
-    }
-},
-        
 }
 </script>
 

@@ -37,7 +37,7 @@
             </div>
         </div>
           <div v-if="clr" class="success">
-        <img src="https://github.com/TURAROVICH/TestList/blob/master/assets/emoji.png" alt="">
+        <img src="https://test-list-nu.vercel.app/_nuxt/img/emoji.c2a5b71.png" alt="">
         <div class="title-succes">Заявка успешно отправлена</div>
         <div class="des-succes">Вскоре наш менеджер свяжется с Вами</div>
     </div>
@@ -75,7 +75,7 @@ export default {
     methods:{
         clear(){
             if(this.name.length>4 && this.phone.length>4 && this.adders.length>4){
-            this.$store.dispatch.clearBasket
+            this.$store.dispatch('clearBasket')
             this.clr = true
             }else{
                 this.error = "Поля заполнены не коректно"
@@ -87,7 +87,7 @@ export default {
             return this.$store.getters.count
         },
         products(){
-            return this.$store.getters.inBasket
+            return this.$store.getters.inBasket 
         }
     },
     components:{

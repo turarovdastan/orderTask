@@ -29,7 +29,7 @@ import Basket from './basket.vue'
 export default {
     computed:{
         countProductInBasket(){
-            return 10
+            return this.$store.getters.count
         }
     },
     data:()=>({
